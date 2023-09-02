@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import PlacesList from "../components/Places/PlacesList";
+import PlaceForm from "../components/Places/PlaceForm";
 
 const AddPlace = () => {
-  return <PlacesList />;
+  return <PlaceForm />;
 };
 
 export default AddPlace;

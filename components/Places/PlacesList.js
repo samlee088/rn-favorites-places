@@ -1,7 +1,5 @@
-import React from "react";
-import { FlatList } from "react-native";
 import PlaceItem from "./PlaceItem";
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 const PlacesList = ({ places }) => {
   if (!places || places.length === 0) {
