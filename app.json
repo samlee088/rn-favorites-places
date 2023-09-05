@@ -36,6 +36,12 @@
           "//": "Disables the microphone permission",
           "microphonePermission": false
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow favorite places to use your location."
+        }
       ]
     ]
   }
