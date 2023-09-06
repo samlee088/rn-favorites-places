@@ -1,3 +1,4 @@
+//please create your own apiKey.js file with your own API key
 import { GOOGLE_API_KEY } from "../apiKey";
 
 export function getMapPreview(lat, lon) {
