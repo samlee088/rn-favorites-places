@@ -11,7 +11,7 @@ import { Image } from "react-native";
 import { Colors } from "../../constants/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
-const ImagePicker = () => {
+const ImagePicker = ({ onImageTaken }) => {
   const [pickedImage, setPickedImage] = useState();
 
   const [cameraPermissionInformation, requestPermission] =
@@ -49,6 +49,7 @@ const ImagePicker = () => {
     });
 
     setPickedImage(image.uri);
+    onImageTaken(image.uri);
   }
 
   let imagePreview = <Text>No image taken yet</Text>;

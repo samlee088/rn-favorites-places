@@ -9,14 +9,14 @@ import {
 } from "expo-location";
 import { Alert } from "react-native";
 import { Image } from "react-native";
-import { getMapPreview } from "../../utils/location";
+import { getAddress, getMapPreview } from "../../utils/location";
 import {
   useIsFocused,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
 
-const LocationPicker = () => {
+const LocationPicker = ({ onLocationPicked }) => {
   const [pickedLocation, setPickedLocation] = useState();
   const isFocused = useIsFocused();
 
@@ -35,6 +35,17 @@ const LocationPicker = () => {
       setPickedLocation(mapPickedLocation);
     }
   }, [route, isFocused]);
+
+  useEffect(() => {
+    async function handleLocation() {
+      if (pickedLocation) {
+        const address = getAddress(pickedLocation.lat, pickedLocation.lon);
+        onLocationPicked({ ...pickedLocation, address: address });
+      }
+    }
+
+    handleLocation();
+  }, [pickedLocation, onLocationPicked]);
 
   async function verifyPermissions() {
     if (
