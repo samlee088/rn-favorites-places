@@ -39,7 +39,11 @@ const LocationPicker = ({ onLocationPicked }) => {
   useEffect(() => {
     async function handleLocation() {
       if (pickedLocation) {
-        const address = getAddress(pickedLocation.lat, pickedLocation.lon);
+        const address = await getAddress(
+          pickedLocation.lat,
+          pickedLocation.lon
+        );
+
         onLocationPicked({ ...pickedLocation, address: address });
       }
     }
@@ -75,8 +79,6 @@ const LocationPicker = ({ onLocationPicked }) => {
     }
 
     const location = await getCurrentPositionAsync();
-
-    console.log(location);
 
     setPickedLocation({
       lat: location.coords.latitude,
