@@ -1,7 +1,15 @@
 import PlaceForm from "../components/Places/PlaceForm";
+import {
+  deleteAndRecreateTable,
+  insertPlace,
+  logColumnNames,
+} from "../utils/database";
 
 function AddPlace({ navigation }) {
-  function createPlaceHandler(place) {
+  async function createPlaceHandler(place) {
+    // await deleteAndRecreateTable();
+    await logColumnNames();
+    await insertPlace(place);
     navigation.navigate("AllPlaces", {
       place: place,
     });
