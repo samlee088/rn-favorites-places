@@ -10,9 +10,7 @@ function AddPlace({ navigation }) {
     // await deleteAndRecreateTable();
     await logColumnNames();
     await insertPlace(place);
-    navigation.navigate("AllPlaces", {
-      place: place,
-    });
+    navigation.navigate("AllPlaces");
   }
 
   return <PlaceForm onCreatePlace={createPlaceHandler} />;
