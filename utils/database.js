@@ -41,9 +41,6 @@ export function insertPlace(place) {
         place.location.lon,
       ];
 
-      console.log("SQL:", sql);
-      console.log("Values:", values);
-
       tx.executeSql(
         sql,
         values,
@@ -147,6 +144,26 @@ export function fetchPlaces() {
           }
 
           resolve(places);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  return promise;
+}
+
+export function fetchPlaceDetails(id) {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        `SELECT * FROM places WHERE id= ?`,
+        [id],
+        (_, result) => {
+          console.log(result);
+          resolve(result.rows._array[0]);
         },
         (_, error) => {
           reject(error);
